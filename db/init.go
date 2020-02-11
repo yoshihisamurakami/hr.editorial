@@ -15,13 +15,11 @@ var (
 
 // Init ..
 func Init() {
-	// 接続用
 	url := os.Getenv("DATABASE_URL")
 	connection, err := pq.ParseURL(url)
 	if err != nil {
 		panic(err.Error())
 	}
-	//connection += " sslmode=require"
 	connection += " sslmode=disable"
 	gorm.Open("postgres", connection)
 	db, err = gorm.Open("postgres", connection)
