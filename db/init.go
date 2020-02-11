@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	//_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/lib/pq"
 )
 
@@ -26,7 +26,7 @@ func Init() {
 		panic(err.Error())
 	}
 	connection += " sslmode=require"
-	db, err := gorm.Open("postgres", connection)
+	_, err := gorm.Open("postgres", connection)
 	if err != nil {
 		panic(err)
 	}
