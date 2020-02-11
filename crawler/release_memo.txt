@@ -1,0 +1,14 @@
+
+heroku addons:create heroku-postgresql:hobby-dev
+heroku pg:psql
+CREATE TABLE editorials (
+    id serial,
+    date date,
+    media_id integer,
+    title text,
+    body text,
+    url text,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    deleted_at timestamp with time zone
+);
