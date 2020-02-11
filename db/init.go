@@ -15,17 +15,14 @@ var (
 
 // Init ..
 func Init() {
-	//fmt.Println("DB_USERNAME = " + os.Getenv("EDITORIAL_DB_USERNAME"))
-	// db, err = gorm.Open("postgres",
-	// 	"user="+os.Getenv("EDITORIAL_DB_USERNAME")+" password="+os.Getenv("EDITORIAL_DB_PASSWORD")+" dbname=editorial sslmode=disable")
-
-	// heroku接続用
+	// 接続用
 	url := os.Getenv("DATABASE_URL")
 	connection, err := pq.ParseURL(url)
 	if err != nil {
 		panic(err.Error())
 	}
-	connection += " sslmode=require"
+	//connection += " sslmode=require"
+	connection += " sslmode=disable"
 	gorm.Open("postgres", connection)
 	db, err = gorm.Open("postgres", connection)
 	if err != nil {

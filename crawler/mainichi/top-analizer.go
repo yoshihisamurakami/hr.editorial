@@ -10,7 +10,7 @@ import (
 const IsTopDownloadMode = true
 const EditorialTopUrl = "https://mainichi.jp/editorial/"
 const TopPageFile = "../mainichi/html/top.html"
-const LinksCountToGet = 1
+const LinksCountToGet = 4
 
 func (t TopAnalizer) GetEditorialLinks() []string {
 	t.Doc = t.getDoc()
