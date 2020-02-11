@@ -1,4 +1,4 @@
-package mainichi
+package tokyo
 
 import (
 	"model"
