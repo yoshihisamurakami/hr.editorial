@@ -1,13 +1,18 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"controller"
+
+	"github.com/gin-gonic/gin"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run()
+	router := gin.Default()
+	router.LoadHTMLGlob("templates/*.html")
+
+	router.GET("/", controller.Index)
+	router.GET("/articles/:id", controller.Show)
+	router.Static("/css/", "./public/css/")
+	router.Run()
 }
