@@ -15,4 +15,4 @@ RUN go build -o ../bin/crawler
 FROM alpine
 COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial /app
 
-EXPOSE 5432
+CMD /app/bin/web 
