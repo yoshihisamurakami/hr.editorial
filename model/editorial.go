@@ -15,13 +15,13 @@ type Editorial struct {
 }
 
 func (e Editorial) Init() {
-	db.Init()
-	db := db.GetDb()
-	defer db.Close()
+	//db.Init()
+	//db := db.GetDb()
+	//defer db.Close()
 
-	if !db.HasTable("editorials") {
-		db.AutoMigrate(&Editorial{})
-	}
+	//if !db.HasTable("editorials") {
+	//	db.AutoMigrate(&Editorial{})
+	//}
 }
 
 func (e Editorial) Count(ei EditorialInfo) (count int) {
