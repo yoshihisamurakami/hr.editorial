@@ -13,6 +13,6 @@ func main() {
 
 	router.GET("/", controller.Index)
 	router.GET("/articles/:id", controller.Show)
-	router.Static("/css/", "./public/css/")
+	router.Static("/css/", "/app/public/css/")
 	router.Run()
 }
