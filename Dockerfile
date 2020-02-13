@@ -14,5 +14,7 @@ RUN go build -o ../bin/crawler
 # runtime image
 FROM alpine
 COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial /app
+RUN ls
+RUN pwd
 
 CMD /app/bin/web 
