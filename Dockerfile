@@ -16,4 +16,5 @@ FROM alpine
 COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial /app
 COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial/templates/ ./templates
 
-CMD /app/bin/web 
+WORKDIR /app/bin
+CMD web
