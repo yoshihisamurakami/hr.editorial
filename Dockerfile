@@ -17,4 +17,4 @@ COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial /app
 COPY --from=builder /go/src/github.com/yoshihisamurakami/hr.editorial/templates/ ./templates
 
 WORKDIR /app/bin
-CMD web
+CMD ./web
