@@ -56,7 +56,7 @@ a:active {
   color: #44a; 
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 750px) {
   body {
     margin: 0.8em 0.8em;
     background-color: #f8f8f8;
