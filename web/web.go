@@ -9,10 +9,10 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.LoadHTMLGlob("/templates/*.html")
+	router.LoadHTMLGlob("../templates/*.html")
 
 	router.GET("/", controller.Index)
 	router.GET("/articles/:id", controller.Show)
-	router.Static("/css/", "/app/public/css/")
+	router.Static("/css/", "../public/css/")
 	router.Run()
 }
