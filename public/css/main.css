@@ -6,7 +6,7 @@ body {
   line-height: 1.5;
   background: #fff;
   border: 1px solid #ccc;
-  padding: 3em 3em;
+  padding: 1em 1em;
   font-size: 1.1em;
   color: #333;
 }
@@ -58,6 +58,10 @@ a:active {
 
 @media screen and (max-width: 550px) {
   body {
-    margin: 3em 3em;
+    margin: 0.8em 0.8em;
+    background-color: #f8f8f8;
+  }
+  .main {
+    padding: 0.5em 0.5em;
   }
 }
