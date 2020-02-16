@@ -2,6 +2,8 @@ package model
 
 import (
 	"db"
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -14,28 +16,14 @@ type Editorial struct {
 	Body    string
 }
 
-func (e Editorial) Init() {
-	//db.Init()
-	//db := db.GetDb()
-	//defer db.Close()
-
-	//if !db.HasTable("editorials") {
-	//	db.AutoMigrate(&Editorial{})
-	//}
-}
-
-func (e Editorial) Count(ei EditorialInfo) (count int) {
-	db.Init()
-	db := db.GetDb()
-	defer db.Close()
-
-	db.Table("editorials").Where("url = ?", ei.Url).Count(&count)
-	return
+func (e Editorial) Count(ei EditorialInfo) int {
+	return db.EditorialsCount(ei.Url)
 }
 
 func (e Editorial) Insert(ei EditorialInfo) {
 	db.Init()
 	db := db.GetDb()
+	fmt.Printf("[MDLins] address = %p\n", db)
 	defer db.Close()
 
 	editorial := Editorial{}

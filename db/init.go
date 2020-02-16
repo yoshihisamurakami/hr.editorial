@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -26,6 +27,7 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Printf("[DBinit] address = %p\n", db)
 }
 
 // GetDb ..
@@ -33,8 +35,17 @@ func GetDb() *gorm.DB {
 	return db
 }
 
+func EditorialsCount(url string) (count int) {
+	Init()
+	defer Close()
+
+	db.Table("editorials").Where("url = ?", url).Count(&count)
+	return
+}
+
 // Close ..
 func Close() {
+	fmt.Println("db Close..")
 	if err := db.Close(); err != nil {
 		panic(err)
 	}

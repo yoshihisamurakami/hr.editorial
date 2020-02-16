@@ -11,12 +11,11 @@ type EditorialInfo struct {
 
 func (ei EditorialInfo) Count() int {
 	editorial := Editorial{}
-	editorial.Init()
 	return editorial.Count(ei)
 }
 
 func (ei EditorialInfo) Insert() {
 	editorial := Editorial{}
-	editorial.Init()
+	//editorial.Init()
 	editorial.Insert(ei)
 }
