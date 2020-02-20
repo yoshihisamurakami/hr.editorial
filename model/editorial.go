@@ -2,7 +2,6 @@ package model
 
 import (
 	"db"
-	"fmt"
 
 	"github.com/jinzhu/gorm"
 )
@@ -23,7 +22,6 @@ func (e Editorial) Count(ei EditorialInfo) int {
 func (e Editorial) Insert(ei EditorialInfo) {
 	db.Init()
 	db := db.GetDb()
-	fmt.Printf("[MDLins] address = %p\n", db)
 	defer db.Close()
 
 	editorial := Editorial{}

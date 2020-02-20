@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -27,7 +26,6 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("[DBinit] address = %p\n", db)
 }
 
 // GetDb ..
@@ -45,7 +43,6 @@ func EditorialsCount(url string) (count int) {
 
 // Close ..
 func Close() {
-	fmt.Println("db Close..")
 	if err := db.Close(); err != nil {
 		panic(err)
 	}
