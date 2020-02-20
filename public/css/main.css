@@ -1,6 +1,18 @@
 body {
-  margin: 3em 20%;
+  margin: 0em 20%;
   background: #f8f8f8;
+}
+h1 {
+  margin: 0 0;
+  padding: 0 1em;
+  color: #66a;
+  background-color: #f0f0f0;
+  font-size: 1.2em;
+  line-height: 1.8;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Hiragino Kaku Gothic ProN,"メイリオ",meiryo,sans-serif;
+}
+.font-big {
+  font-size: 1.3em;
 }
 .main {
   line-height: 1.5;
@@ -57,7 +69,6 @@ a:active {
     margin: 0 0;
   }
   .main {
-    /*font-size: 1.1em;*/
     padding: 1em 1em;
   }
   .title {
