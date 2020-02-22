@@ -7,7 +7,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-const IsTopDownloadMode = false
+const IsTopDownloadMode = true
 const EditorialTopUrl = "https://www.asahi.com/news/editorial.html"
 const EditorialDomain = "https://www.asahi.com/"
 const TopPageFile = "./asahi/html/top.html"
