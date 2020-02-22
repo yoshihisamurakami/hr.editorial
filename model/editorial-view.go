@@ -23,6 +23,6 @@ func (e *EditorialView) ensureForView() {
 }
 
 func (e EditorialView) getMediaName() string {
-	mediaNames := []string{"", "毎日新聞", "東京新聞"}
+	mediaNames := []string{"", "毎日新聞", "東京新聞", "朝日新聞"}
 	return mediaNames[e.MediaId]
 }
