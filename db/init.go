@@ -23,7 +23,6 @@ func Init() {
 		panic(err.Error())
 	}
 	connection += " sslmode=disable"
-	gorm.Open("postgres", connection)
 	_db, err = gorm.Open("postgres", connection)
 	if err != nil {
 		panic(err)
