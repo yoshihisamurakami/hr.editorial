@@ -5,11 +5,20 @@ import (
 	"fmt"
 	"model"
 	"strings"
+
+	"github.com/jinzhu/gorm"
 )
 
+var dbInstance *gorm.DB
+
+func init() {
+	fmt.Println("### service editorial Init!")
+}
+
 func GetEditorials() []model.EditorialView {
-	db.Init()
-	dbInstance := db.GetDb()
+	// db.Init()
+	// dbInstance := db.GetDb()
+	dbInit()
 	defer db.Close()
 
 	var article []model.Editorial
@@ -25,9 +34,10 @@ func GetEditorials() []model.EditorialView {
 }
 
 func GetOneEditorial(id string) model.EditorialView {
-	db.Init()
-	dbInstance := db.GetDb()
-	defer db.Close()
+	// db.Init()
+	// dbInstance := db.GetDb()
+	// defer db.Close()
+	dbInit()
 
 	var article model.Editorial
 	var articleView model.EditorialView
@@ -38,8 +48,8 @@ func GetOneEditorial(id string) model.EditorialView {
 }
 
 func GetPrevNextEditorial(id string) (prevArticle model.Editorial, nextArticle model.Editorial) {
-	db.Init()
-	dbInstance := db.GetDb()
+	// db.Init()
+	// dbInstance := db.GetDb()
 	defer db.Close()
 
 	var article []model.Editorial
@@ -61,6 +71,11 @@ func GetPrevNextEditorial(id string) (prevArticle model.Editorial, nextArticle m
 		}
 	}
 	return
+}
+
+func dbInit() {
+	db.Init()
+	dbInstance = db.GetDb()
 }
 
 func getArticleBody(body string) []string {
