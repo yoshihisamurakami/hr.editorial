@@ -11,10 +11,6 @@ import (
 
 var dbInstance *gorm.DB
 
-func init() {
-	fmt.Println("### service editorial Init!")
-}
-
 func GetEditorials() []model.EditorialView {
 	// db.Init()
 	// dbInstance := db.GetDb()
