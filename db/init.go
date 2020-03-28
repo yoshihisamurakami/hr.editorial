@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -9,7 +10,7 @@ import (
 )
 
 var (
-	db  *gorm.DB
+	_db *gorm.DB
 	err error
 )
 
@@ -17,12 +18,13 @@ var (
 func Init() {
 	url := os.Getenv("DATABASE_URL")
 	connection, err := pq.ParseURL(url)
+	fmt.Println("### connection URL = " + url)
 	if err != nil {
 		panic(err.Error())
 	}
 	connection += " sslmode=disable"
 	gorm.Open("postgres", connection)
-	db, err = gorm.Open("postgres", connection)
+	_db, err = gorm.Open("postgres", connection)
 	if err != nil {
 		panic(err)
 	}
@@ -30,20 +32,21 @@ func Init() {
 
 // GetDb ..
 func GetDb() *gorm.DB {
-	return db
+	return _db
 }
 
 func EditorialsCount(url string) (count int) {
 	Init()
 	defer Close()
 
-	db.Table("editorials").Where("url = ?", url).Count(&count)
+	_db.Table("editorials").Where("url = ?", url).Count(&count)
 	return
 }
 
 // Close ..
 func Close() {
-	if err := db.Close(); err != nil {
+	fmt.Println("### connection Close..")
+	if err := _db.Close(); err != nil {
 		panic(err)
 	}
 }

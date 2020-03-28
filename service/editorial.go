@@ -9,12 +9,12 @@ import (
 
 func GetEditorials() []model.EditorialView {
 	db.Init()
-	db := db.GetDb()
+	dbInstance := db.GetDb()
 	defer db.Close()
 
 	var article []model.Editorial
 	var articleView []model.EditorialView
-	db.Order("date DESC, media_id DESC, created_at DESC").Find(&article)
+	dbInstance.Limit(30).Order("date DESC, media_id DESC, created_at DESC").Find(&article)
 
 	for _, v := range article {
 		av := model.EditorialView{}
@@ -26,12 +26,12 @@ func GetEditorials() []model.EditorialView {
 
 func GetOneEditorial(id string) model.EditorialView {
 	db.Init()
-	db := db.GetDb()
+	dbInstance := db.GetDb()
 	defer db.Close()
 
 	var article model.Editorial
 	var articleView model.EditorialView
-	db.Find(&article, id)
+	dbInstance.Find(&article, id)
 	articleView.Init(article)
 	articleView.FormattedBody = getArticleBody(article.Body)
 	return articleView
@@ -39,12 +39,12 @@ func GetOneEditorial(id string) model.EditorialView {
 
 func GetPrevNextEditorial(id string) (prevArticle model.Editorial, nextArticle model.Editorial) {
 	db.Init()
-	db := db.GetDb()
+	dbInstance := db.GetDb()
 	defer db.Close()
 
 	var article []model.Editorial
 	var count int
-	db.Order("date DESC, media_id DESC, created_at DESC").Find(&article).Count(&count)
+	dbInstance.Order("date DESC, media_id DESC, created_at DESC").Find(&article).Count(&count)
 	max := count
 
 	for i, _ := range article {
